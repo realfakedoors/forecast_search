@@ -1,11 +1,35 @@
 import React from "react";
 
-const Location = () => {
+const Location = ({ cityName, stateName, country, lat, lng, grabForecast }) => {
+  const city = { cityName, stateName, country }
+  
+  function findFlag() {
+    const regex = new RegExp(/\s+/, "g");
+    const formattedName = country.replace(regex, "-").toLowerCase();
+    return `../assets/flags/${formattedName}.svg`;
+  }
+  
   return (
-    <div className="Location">
-    
+    <div className="location" onClick={() => grabForecast(city, lat, lng)}>
+      <div className="box">
+        <article className="media">
+          <figure className="media-left">
+            <p className="image is-64x64">
+              <img src={findFlag()} alt={country} />
+            </p>
+          </figure>
+          <div className="media-content">
+            <div className="content">
+              <p>
+                <strong>{cityName}{stateName ? `, ${stateName}` : ""}</strong>
+                <br />{country}
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   );
-}
+};
 
 export default Location;
