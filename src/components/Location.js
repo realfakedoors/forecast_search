@@ -4,7 +4,7 @@ const Location = ({ cityName, stateName, country, lat, lng, grabForecast }) => {
   function findFlag() {
     const regex = new RegExp(/\s+/, "g");
     const formattedName = country.replace(regex, "-").toLowerCase();
-    return `../assets/flags/${formattedName}.svg`;
+    return `./assets/flags/${formattedName}.svg`;
   }
   
   return (
