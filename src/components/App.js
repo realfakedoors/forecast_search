@@ -42,7 +42,7 @@ const App = () => {
       setUnits("imperial");
     }
   }
-
+  
   async function grabPlaces() {
     try {
       const search = document.getElementById("enter-a-city").value;
@@ -150,7 +150,7 @@ const App = () => {
             alt="Forecast Search"
           />
         </a>
-        <h5 className="navbar-item company-name">Forecast Search</h5>
+        <h5 className="navbar-item app-title">Forecast Search</h5>
       </nav>
       <div id="errors">{errorMsg}</div>
       <div id="display">{display}</div>

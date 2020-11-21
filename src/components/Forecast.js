@@ -100,11 +100,11 @@ const Forecast = ({
 
   return (
     <div className="forecast">
-      <div className="box">
-        <p className="title is-2">
+      <div className="box forecast-box">
+        <p className="title is-1 city-name">
           {cityName}
         </p>
-        <p className="title is-4 display-temp">
+        <p className="display-temp title is-3">
           {temperature}°{displayTempUnits(units)}
         </p>
         <p className="subtitle is-6">

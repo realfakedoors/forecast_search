@@ -1,23 +1,25 @@
 @import "../../node_modules/bulma/css/bulma.css";
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;900&family=Oswald&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;900&family=Oswald&display=swap");
 
 body {
   min-height: 100vh;
-  
+
   margin: 0;
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  font-family: 'Merriweather', serif;
-  background-color: #3F3C43;
-  background-image: url(./bg.jpg);
+
+  font-family: "Merriweather", serif;
+  background-color: #3f3c43;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .site-nav {
-  background-color: #903A47;
+  background-color: #903a47;
+  
+  display: flex;
+  flex-direction: row;
 }
 
 .navbar-brand {
@@ -30,8 +32,8 @@ body {
   width: 60px;
 }
 
-.company-name {
-  font-family: 'Oswald', sans-serif;
+.app-title {
+  font-family: "Oswald", sans-serif;
   font-size: 35px;
   color: #d5d5dd;
 }
@@ -39,59 +41,68 @@ body {
 .search-bar {
   position: relative;
   width: 480px;
-  
+
   margin: 240px auto 0;
   padding: 24px 0;
-  
+
   display: flex;
   justify-content: center;
-  
+
+  border: 5px solid #903a47;
   background-color: #f0b83f;
-  border-radius: 15px;
-  border: 2px solid #903A47;
+}
+
+.search-bar,
+.location {
+  border-radius: 10px;
 }
 
 .units-icon {
   height: 50px;
   width: 50px;
-  
+
   margin-left: 20px;
 }
 
-input,
-button {
+#enter-a-city,
+.search-submit {
   font-family: inherit;
 }
 
-button,
-.results-text,
-
- {
+.search-submit,
+.results-text {
   color: #d5d5dd;
 }
 
-button {
+.search-submit,
+.switch-units {
+  cursor: pointer;
+}
+
+.search-submit {
   margin-left: 12px;
   padding: 5px;
-  
+
   font-size: 14px;
   font-weight: 700;
-  background-color: #903A47;
-  
+  background-color: #903a47;
+
   border: 1px solid #555;
   border-radius: 5px;
 }
 
 .forecast {
-  width: 70%;
-  
   margin: 20px auto;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   text-align: center;
+}
+
+.forecast-box {
+  border: 9px solid #903a47;
 }
 
 .forecast-icon {
@@ -99,21 +110,30 @@ button {
   height: 300px;
 }
 
+.city-name {
+  color: #eda812;
+  text-shadow: 2px 2px #888;
+}
+
 .all-places {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  
+  justify-content: center;
 }
 
 .location {
   margin: 10px;
   padding: 0;
   
+  border: 5px solid #f0b83f;
+
   cursor: pointer;
 }
 
 .box {
-  background-color: #D5D5DD;
+  background-color: #d5d5dd;
 }
 
 .minor-info {
@@ -129,4 +149,17 @@ button {
 .right-minor-stat,
 .wind {
   font-weight: 700;
+}
+
+@media screen and (max-device-width: 375px) {
+  .search-bar {
+    width: 100vw;
+    overflow: none;
+    
+    padding: 12px 5px;
+  }
+  
+  .units-icon {
+    margin-left: 4px;
+  }
 }
