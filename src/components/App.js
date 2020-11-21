@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
+import SearchBar from "./SearchBar";
 import Location from "./Location";
 import Forecast from "./Forecast";
 
@@ -7,12 +8,18 @@ import cityList from "../assets/city-list.json";
 
 const App = () => {
   const [units, setUnits] = useState("imperial");
+  
   const [display, setDisplay] = useState(displaySearchBar());
   const [errorMsg, setErrorMsg] = useState("");
 
   const api_key = "3a6f70508651c854d613ffe499c8360a";
   const countryList = require("../assets/country-names");
-
+  
+  useEffect(() => {
+    setDisplay(displaySearchBar());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [units]);
+  
   function displayError(error) {
     console.log(error);
     setErrorMsg(
@@ -26,6 +33,14 @@ const App = () => {
         </div>
       </section>
     );
+  }
+  
+  function toggleUnits() {
+    if (units === "imperial"){
+      setUnits("metric");
+    } else {
+      setUnits("imperial");
+    }
   }
 
   async function grabPlaces() {
@@ -42,17 +57,11 @@ const App = () => {
 
   function displaySearchBar() {
     return (
-      <div className="search-bar">
-        <input id="enter-a-city" type="text" placeholder="Enter a City" />
-        <button onClick={() => grabPlaces()}>Get the Weather</button>
-        <span onClick={() => switchUnits()}>
-          <img
-            src={`./assets/icons/${units}.svg`}
-            alt={"Switch Units?"}
-            className={"units-icon"}
-          />
-        </span>
-      </div>
+      <SearchBar
+        grabPlaces={grabPlaces}
+        toggleUnits={toggleUnits}
+        units={units}
+      />
     );
   }
 
@@ -68,27 +77,29 @@ const App = () => {
           <section className="hero">
             <div className="hero-body">
               <div className="container">
-                <h1 className="title">
+                <h1 className="title results-text">
                   {places.length} results for '{search}'.
                 </h1>
-                <h2 className="subtitle">Did you mean...</h2>
+                <h2 className="subtitle results-text">Did you mean...</h2>
               </div>
             </div>
           </section>
-          {places.map((place, key) => {
-            const formattedCountry = countryList[place.country];
-            return (
-              <Location
-                key={key}
-                cityName={place.name}
-                country={formattedCountry}
-                stateName={place.state}
-                grabForecast={grabForecast}
-                lat={place.coord.lat}
-                lng={place.coord.lon}
-              />
-            );
-          })}
+          <div className="all-places">
+            {places.map((place, key) => {
+              const formattedCountry = countryList[place.country];
+              return (
+                <Location
+                  key={key}
+                  cityName={place.name}
+                  country={formattedCountry}
+                  stateName={place.state}
+                  grabForecast={grabForecast}
+                  lat={place.coord.lat}
+                  lng={place.coord.lon}
+                />
+              );
+            })}
+          </div>
         </div>
       );
     }
@@ -125,10 +136,6 @@ const App = () => {
     );
   }
 
-  function switchUnits() {
-    units === "imperial" ? setUnits("metric") : setUnits("imperial");
-  }
-
   return (
     <div className="app">
       <nav
@@ -138,7 +145,7 @@ const App = () => {
       >
         <a className="navbar-brand" href={process.env.PUBLIC_URL}>
           <img
-            className="navbar-item"
+            className="logo"
             src={`./assets/icons/sitelogo.svg`}
             alt="Forecast Search"
           />

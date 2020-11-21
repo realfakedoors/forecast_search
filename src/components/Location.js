@@ -10,7 +10,7 @@ const Location = ({ cityName, stateName, country, lat, lng, grabForecast }) => {
   return (
     <div className="location" onClick={() => grabForecast(cityName, lat, lng)}>
       <div className="box">
-        <article className="media">
+        <article className="media location-media">
           <figure className="media-left">
             <p className="image is-64x64">
               <img src={findFlag()} alt={country} />

@@ -2,28 +2,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;900&family=Oswald&display=swap');
 
 body {
+  min-height: 100vh;
+  
   margin: 0;
   
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
   font-family: 'Merriweather', serif;
+  background-color: #3F3C43;
+  background-image: url(./bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.location {
-  width: 80%;
-  
-  margin: 0 auto;
+.site-nav {
+  background-color: #903A47;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+  width: 60px;
+}
+
+.company-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 35px;
+  color: #d5d5dd;
 }
 
 .search-bar {
-  height: 50px;
-  width: 60%;
+  position: relative;
+  width: 480px;
   
-  margin: 20px auto;
+  margin: 240px auto 0;
+  padding: 24px 0;
   
   display: flex;
   justify-content: center;
+  
+  background-color: #f0b83f;
+  border-radius: 15px;
+  border: 2px solid #903A47;
 }
 
 .units-icon {
@@ -38,6 +63,25 @@ button {
   font-family: inherit;
 }
 
+button,
+.results-text,
+
+ {
+  color: #d5d5dd;
+}
+
+button {
+  margin-left: 12px;
+  padding: 5px;
+  
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #903A47;
+  
+  border: 1px solid #555;
+  border-radius: 5px;
+}
+
 .forecast {
   width: 70%;
   
@@ -46,9 +90,43 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+  text-align: center;
 }
 
 .forecast-icon {
   width: 300px;
   height: 300px;
+}
+
+.all-places {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.location {
+  margin: 10px;
+  padding: 0;
+  
+  cursor: pointer;
+}
+
+.box {
+  background-color: #D5D5DD;
+}
+
+.minor-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wind {
+  margin-top: 25px;
+}
+
+.left-minor-stat,
+.right-minor-stat,
+.wind {
+  font-weight: 700;
 }

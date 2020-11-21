@@ -10,3 +10,4 @@ https://www.theodinproject.com/lessons/weather-app
 Demonstrates an understanding of utilizing 3rd-party APIs and asynchronous patterns in JavaScript. Built with React.  
 
 Weather & Flag icons by [Freepik](https://www.flaticon.com/authors/freepik) and Celsius/Fahrenheit icons by [Those Icons](https://www.flaticon.com/authors/those-icons).  
+Color Palette by [thall](https://www.colourlovers.com/lover/thall).  

@@ -101,13 +101,13 @@ const Forecast = ({
   return (
     <div className="forecast">
       <div className="box">
-        <p className="title is-4">
+        <p className="title is-2">
           {cityName}
         </p>
-        <p className="title is-5">
+        <p className="title is-4 display-temp">
           {temperature}°{displayTempUnits(units)}
         </p>
-        <p className="subtitle is-5">
+        <p className="subtitle is-6">
           {weatherDescription}
         </p>
         <img
@@ -115,15 +115,17 @@ const Forecast = ({
           alt={weatherCondition}
           className="forecast-icon"
         />
-        <p className="subtitle is-6">
+        <p className="subtitle is-4 wind">
           {displayWind(windSpeed, windDirection)}
         </p>
-        <p className="subtitle is-6">
-          Humidity: {humidity}%
-        </p>
-        <p className="subtitle is-6">
-          Cloudiness: {cloudiness}%
-        </p>
+        <div className="minor-info">
+          <p className="subtitle is-6 left-minor-stat">
+            Humidity: {humidity}%
+          </p>
+          <p className="subtitle is-6 right-minor-stat">
+            Cloudiness: {cloudiness}%
+          </p>
+        </div>
       </div>
     </div>
   );
