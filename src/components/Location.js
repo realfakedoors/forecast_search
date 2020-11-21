@@ -1,8 +1,6 @@
 import React from "react";
 
-const Location = ({ cityName, stateName, country, lat, lng, grabForecast }) => {
-  const city = { cityName, stateName, country }
-  
+const Location = ({ cityName, stateName, country, lat, lng, grabForecast }) => {  
   function findFlag() {
     const regex = new RegExp(/\s+/, "g");
     const formattedName = country.replace(regex, "-").toLowerCase();
@@ -10,7 +8,7 @@ const Location = ({ cityName, stateName, country, lat, lng, grabForecast }) => {
   }
   
   return (
-    <div className="location" onClick={() => grabForecast(city, lat, lng)}>
+    <div className="location" onClick={() => grabForecast(cityName, lat, lng)}>
       <div className="box">
         <article className="media">
           <figure className="media-left">

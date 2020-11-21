@@ -1,12 +1,16 @@
 import React from "react";
 
 const Forecast = ({
-  city,
+  cityName,
   weatherConditionCode,
   weatherCondition,
   weatherDescription,
+  temperature,
+  humidity,
+  cloudiness,
   windSpeed,
-  windDirection
+  windDirection,
+  units
 }) => {
   function setIcon(conditionCode) {
     switch (true) {
@@ -83,25 +87,42 @@ const Forecast = ({
       default:
         arrow = '';
    }
-    return `Wind: ${speed} ${displayDirection} ${arrow}`;
+    return `Wind: ${speed}${displayWindSpeedUnits(units)} ${displayDirection} ${arrow}`;
+  }
+  
+  function displayTempUnits(units){
+    return(units === 'imperial' ? 'F' : 'C')
+  }
+  
+  function displayWindSpeedUnits(units){
+    return(units === 'imperial' ? 'MPH' : 'MPS')
   }
 
   return (
     <div className="forecast">
       <div className="box">
         <p className="title is-4">
-          {city.cityName}{city.stateName ? `, ${city.stateName}` : ""}<br />{city.country}
+          {cityName}
+        </p>
+        <p className="title is-5">
+          {temperature}°{displayTempUnits(units)}
+        </p>
+        <p className="subtitle is-5">
+          {weatherDescription}
         </p>
         <img
           src={`./assets/icons/${setIcon(weatherConditionCode)}.svg`}
           alt={weatherCondition}
           className="forecast-icon"
         />
-        <p className="subtitle is-5">
-          {weatherDescription}
-        </p>
         <p className="subtitle is-6">
           {displayWind(windSpeed, windDirection)}
+        </p>
+        <p className="subtitle is-6">
+          Humidity: {humidity}%
+        </p>
+        <p className="subtitle is-6">
+          Cloudiness: {cloudiness}%
         </p>
       </div>
     </div>
